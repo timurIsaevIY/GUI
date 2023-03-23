@@ -4,17 +4,27 @@ public class StringArray {
     private String[] strings;
     public StringArray(String[] strings){
         Arrays.sort(strings,(str3, str2) -> str3.length() - str2.length());
-        this.strings=strings;
+        this.strings= new String[strings.length+10];
+        System.arraycopy(strings,0,this.strings,this.strings.length-strings.length,strings.length);
+
     }
     public void stringAdd(String str){
-        String[] str1 = new String [strings.length+1];
-        for(int i=0; i<strings.length;i++) {
-            str1[i]=strings[i];
-        }
-        strings = null;
-        str1[str1.length-1]=str;
-        strings=str1;
-        Arrays.sort(strings,(str3, str2) -> str3.length() - str2.length());
+        if (!Arrays.asList(this.strings).contains(null)) {
+            expansion();}
+            int i = 0;
+            while (this.strings[i]==null) {
+                i++;
+            }
+        int index=i;
+            while (i<this.strings.length && this.strings[i].length() < str.length() ){
+                i++;
+            }
+            i-=1;
+            while(index<i){
+                this.strings[index]=this.strings[index+1];
+                index++;
+            }
+            this.strings[i]=str;
     }
     public String getMaxString(){
         return strings[strings.length-1];
@@ -25,5 +35,14 @@ public class StringArray {
             len+=str.length();
         }
         return (float)len/strings.length;
+    }
+    public String[] show(){
+        return strings;
+    }
+    void expansion(){
+        String[] q=this.strings;
+        this.strings=new String[q.length+10];
+        System.arraycopy(q,0,this.strings,10,q.length);
+        q=null;
     }
 }

@@ -1,18 +1,29 @@
+import java.util.Arrays;
+import java.util.concurrent.ExecutionException;
+
 public class Main {
     public static void main(String[] args) {
         class Creator{
-            public void create(String[] typeOfDeveloper) throws WrongTypeOfDeveloperExceptionImpl  {
+            public void create(String[] typeOfDeveloper)   {
                 switch (typeOfDeveloper[0]) {
                     case "JavaDeveloper" :
+                        try {
                             JavaDeveloper javaDeveloper = new JavaDeveloper(typeOfDeveloper[1], typeOfDeveloper[2], Integer.parseInt(typeOfDeveloper[3]), typeOfDeveloper[4]);
                             javaDeveloper.doCode();
-                            break;
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
+                        }
+                        break;
                     case "PythonDeveloper" :
-                            PythonDeveloper pythonDeveloper= new PythonDeveloper(typeOfDeveloper[1], typeOfDeveloper[2], Integer.parseInt(typeOfDeveloper[3]), typeOfDeveloper[4]);
+                        try {
+                            PythonDeveloper pythonDeveloper = new PythonDeveloper(typeOfDeveloper[1], typeOfDeveloper[2], Integer.parseInt(typeOfDeveloper[3]), typeOfDeveloper[4]);
                             pythonDeveloper.doCode();
-                            break;
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
+                        }
+                        break;
                     default :
-                            throw new WrongTypeOfDeveloperException("error: no such type of developer");
+                            System.out.println("error: no such type of developer");
                 }
             }
         }

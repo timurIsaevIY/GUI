@@ -6,49 +6,49 @@ public class Vector {
         this.location = location;
     }
 
-    public String scalarMultiplication(Vector vector) {
+    public int scalarMultiplication(Vector vector) {
         if (this.location.length == vector.location.length) {
             int sum = 0;
             for (int i = 0; i < this.location.length; i++) {
                 sum += this.location[i] * vector.location[i];
             }
-            return Integer.toString(sum);
+            return sum;
         } else {
-            return "different dimensions of spaces";
+            throw new IllegalArgumentException("different dimensions of spaces");
         }
     }
 
-    public String sum(Vector vector) {
+    public int[] sum(Vector vector) {
         if (this.location.length == vector.location.length) {
             int[] res = new int[this.location.length];
             for (int i = 0; i < this.location.length; i++) {
                 res[i] = this.location[i] + vector.location[i];
             }
-            return Arrays.toString(res);
+            return res;
         } else {
-            return "different dimensions of spaces";
+            throw new IllegalArgumentException("different dimensions of spaces");
         }
     }
-    public String difference(Vector vector) {
+    public int[] difference(Vector vector) {
         if (this.location.length == vector.location.length) {
             int[] res = new int[this.location.length];
             for (int i = 0; i < this.location.length; i++) {
                 res[i] = this.location[i] - vector.location[i];
             }
-            return Arrays.toString(res);
+            return res;
         } else {
-            return "different dimensions of spaces";
+            throw new IllegalArgumentException("different dimensions of spaces");
         }
     }
-    public String multiplication(Vector vector) {
+    public int[] multiplication(Vector vector) {
         if (this.location.length == vector.location.length) {
             int[] res = new int[this.location.length];
             for (int i = 0; i < this.location.length; i++) {
                 res[i] = this.location[i] * vector.location[i];
             }
-            return Arrays.toString(res);
+            return res;
         } else {
-            return "different dimensions of spaces";
+            throw new IllegalArgumentException("different dimensions of spaces");
         }
     }
     public double Length(){
@@ -58,10 +58,20 @@ public class Vector {
         }
         return Math.sqrt(l);
     }
-    public Double corner(Vector vector){
-        return Math.acos(Integer.parseInt(sum(vector))/(this.Length()*vector.Length()));
+    public double corner(Vector vector){
+        if (this.location.length == vector.location.length) {
+            return Math.acos(this.scalarMultiplication(vector) / (this.Length() * vector.Length()));
+        }
+        else{
+            throw new IllegalArgumentException("different dimensions of spaces");
+        }
     }
     public double square(Vector vector){
+        if (this.location.length == vector.location.length) {
         return this.Length()*vector.Length()*Math.sin(this.corner(vector));
+        }
+        else{
+            throw new IllegalArgumentException("different dimensions of spaces");
+        }
     }
 }

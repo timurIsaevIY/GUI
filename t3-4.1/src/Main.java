@@ -3,6 +3,6 @@ public class Main {
         Point point1 = new Point(1,1);
         Point point2 = new Point(2,2);
         System.out.println(point1.DistanceTo(point2));
-        System.out.println(point2.toString());
+        System.out.println(point2);
     }
 }

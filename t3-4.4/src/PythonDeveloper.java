@@ -7,6 +7,6 @@ public class PythonDeveloper extends Developer{
     @Override
     public void doCode() {
         System.out.println("Java developer starting write code");
-        System.out.printf(getName()+" "+getLevel()+" "+getExperience());
+        System.out.println(getName() + " " + getLevel() + " " +getExperience());
     }
 }
