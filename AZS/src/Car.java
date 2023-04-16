@@ -9,7 +9,7 @@ public class Car {
 
     public Car( int timeArriving, int timeRefuel){
         Random rand = new Random();
-        tank_fullness = rand.nextInt(40) + 40;
+        tank_fullness = rand.nextInt(500) + 40;
         tank_capacity = rand.nextInt(tank_fullness);
         fuel = rand.nextInt( tank_fullness - tank_capacity);
         this.timeArriving=timeArriving;

@@ -6,7 +6,7 @@ public class Gas_station {
     private static int fuelCapacity;
     public Gas_station() {
         columns.add(new Column());
-        fuelCapacity=1000;
+        fuelCapacity=2000;
     }
 
     public int getFuelCapacity() {
@@ -67,8 +67,9 @@ public class Gas_station {
             System.out.println("Column№" + quantity+":"+column.quantityOfCars() + " " + column.getRefueledCars());
             quantity+=1;
         }
-        System.out.println("\n");
+        System.out.println("");
         System.out.println("Fuel capacity:" + fuelCapacity);
+        System.out.println("");
     }
 
 }
